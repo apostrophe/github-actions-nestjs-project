@@ -1,0 +1,23 @@
+name: automate comments on new github issues
+
+on: 
+  issues:
+    types: [opened]
+
+jobs:
+  # anything ok in the below line?
+  comment-on-issue:   
+    runs-on: ubuntu-latest
+    steps:
+      - name: "dump github context"
+        # does jq format this json? or does it need '.' after jq?
+        run: echo '${{ toJSON(github.event) }}' | jq
+        shell: bash
+      - name: 'create comment'
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            This is a multi-line test comment, using:
+            https://github.com/peter-evans/create-or-update-comment@v1
+          reactions: +10
