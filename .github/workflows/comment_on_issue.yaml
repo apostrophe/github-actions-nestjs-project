@@ -10,14 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "dump github context"
-        # does jq format this json? or does it need '.' after jq?
+        # Q: does jq format this json? or does it need '.' after jq? 
+        # A: just jq is enough to format the JSON displayed
         run: echo '${{ toJSON(github.event) }}' | jq
         shell: bash
       - name: 'create comment'
-        uses: peter-evans/create-or-update-comment@v1.4.5
+        uses: peter-evans/create-or-update-comment@v4
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
             This is a multi-line test comment, using:
-            https://github.com/peter-evans/create-or-update-comment@v1
-          reactions: +10
+            https://github.com/peter-evans/create-or-update-comment@
+          reactions: '+10'
