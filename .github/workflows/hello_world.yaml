@@ -1,14 +1,23 @@
 name: hello world workflow
-run-name: This is the run-name -> Workflow triggered by ${{ github.event }} event, for @${{ github.actor }}
+# run-name specifies what's on the workflow run (the main job under Actions tab in main section)
+# this usually has the commit description, which in most cases is most useful
+#run-name: This is the run-name -> Workflow triggered by ${{ github.event }} event, for @${{ github.actor }}
 
-on:
-  push:
-    # branches:
-    #   - main
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:
+
+# allowable formats
+on: [push, pull_request, workflow_dispatch]
+
+
+# on:
+#   push:
+#     # branches:
+#     #   - main
+#   pull_request:
+#     branches:
+#       - main
+#   workflow_dispatch:
+
+permissions: {}
 
 jobs:
   hello:
