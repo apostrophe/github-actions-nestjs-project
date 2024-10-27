@@ -1,5 +1,5 @@
 name: hello world workflow
-run-name: This is the run-name Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
+run-name: This is the run-name -> Workflow triggered by ${{ github.event }} event, for @${{ github.actor }}
 
 on:
   push:
@@ -27,7 +27,6 @@ jobs:
         run: echo "Goodbye World"
         shell: bash
 
-jobs:
   dump_contexts_to_log:
     runs-on: ubuntu-latest
     steps:
