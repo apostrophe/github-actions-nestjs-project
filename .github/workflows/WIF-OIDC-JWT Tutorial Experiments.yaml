@@ -1,0 +1,23 @@
+name: WIF/OIDC/JWT Tutorial/Experiments
+# run-name specifies what's on the workflow run (the main job under Actions tab in main section)
+# this usually has the commit description, which in most cases is most useful
+#run-name: This is the run-name -> Workflow triggered by ${{ github.event }} event, for @${{ github.actor }}
+
+
+# allowable formats
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  job_id:
+    # Add "id-token" with the intended permissions.
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+    - uses: 'actions/checkout@v4'
+
+    - uses: 'google-github-actions/auth@v2'
+      with:
+        project_id: 'gcploggingproject-430020'
+        workload_identity_provider: 'projects/771074581584/locations/global/workloadIdentityPools/github/providers/my-repo'
