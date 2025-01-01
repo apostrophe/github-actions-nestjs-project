@@ -8,8 +8,8 @@ name: WIF/OIDC/JWT Tutorial/Experiments
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
-  job_id:
-    # Add "id-token" with the intended permissions.
+  wif-oidc-experiment:
+    runs-on: ubuntu-latest
     permissions:
       contents: 'read'
       id-token: 'write'
