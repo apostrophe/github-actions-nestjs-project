@@ -22,10 +22,11 @@ jobs:
         project_id: 'gcploggingproject-430020'
         workload_identity_provider: 'projects/771074581584/locations/global/workloadIdentityPools/github/providers/my-repo'
           
+    # from https://github.com/google-github-actions/setup-gcloud
     - name: 'Set up Cloud SDK'
       uses: 'google-github-actions/setup-gcloud@v2'
       with:
         version: '>= 363.0.0'
 
     - name: 'Use gcloud CLI'
-      run: 'gcloud info'
+      run: 'gcloud secrets list'
